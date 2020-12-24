@@ -8,7 +8,6 @@
             "email": "alekseev_ap@mail.ru"
         }
     ],
-
     "require": {
         "twig/twig": "^3.1"
     }
