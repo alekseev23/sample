@@ -12,5 +12,3 @@ $Y=rand(0,100);
 $Z=rand(0,100);
 
 echo $twig->render('XYZ.html', ['X' => $X, 'Y' => $Y, 'Z' => $Z]);
-
-
