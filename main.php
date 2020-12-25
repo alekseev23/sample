@@ -9,6 +9,6 @@ $twig = new \Twig\Environment($loader, [
 
 $x = rand(0,100);
 $y = rand(0,100);
-$y = rand(0,100);
+$z = rand(0,100);
 
 echo $twig->render('XYZ.html', ['X' => $x, 'Y' => $y, 'Z' => $z]);
