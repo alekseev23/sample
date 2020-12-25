@@ -2,11 +2,7 @@
 
 declare(strict_types=1);
 
-require "config.php";
-require "vendor/autoload.php";
-require "app/models/Database.php";
-require "app/models/User.php";
-require "app/controllers/Users.php";
+require "bootstrap.php";
 
 use Models\Database;
 use Controllers\Users;
