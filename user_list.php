@@ -3,11 +3,7 @@ declare(strict_types=1);
 
 require "bootstrap.php";
 
-use Models\Database;
-use Controllers\Users;
-
-$dt = new Database();
-$users = Users::show_users();
+$users = Controllers\Users::show_users();
 foreach ($users as $user) {
-    echo $user->name."<br>\n";
+    echo $user->name."\n";
 }

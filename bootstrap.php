@@ -1,13 +1,14 @@
 <?php
 declare(strict_types=1);
+namespace Work;
 
 require "vendor/autoload.php";
-require "app/models/User.php";
-require "app/controllers/Users.php";
+require "src/models/User.php";
+require "src/controllers/Users.php";
 
-namespace Models;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Controllers\Users;
+use Model\User;
 
 defined("DBDRIVER")or define("DBDRIVER","mysql");
 defined("DBHOST")or define("DBHOST","localhost");

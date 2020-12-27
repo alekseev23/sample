@@ -4,13 +4,17 @@ declare(strict_types=1);
 
 require "bootstrap.php";
 
-use Models\Database;
-use Controllers\Users;
-
-$dt = new Database();
-$user = Users::create_user($argv[1]);
-$users = Users::show_users();
-
-foreach($users as $user) {
-    echo $user->name."<br>\n";
+if ($argc!=2) {
+    echo "Usage: user_add.php Username\n";
+    return;
+}
+try {
+    $user = Controllers\Users::create_user($argv[1]);
+    echo "User '".$argv[1]."' successfully added with id=".$user->id."\n";
+}
+catch (Throwable $t) {
+    echo "User exists: ".$argv[1]."\n";
+}
+catch (Exception $e) {
+    echo "EEE\n";
 }

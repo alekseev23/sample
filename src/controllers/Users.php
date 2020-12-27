@@ -13,7 +13,6 @@ class Users {
     }
     public static function show_users () {
         $users = User::all();
-        //$users = User::with('articles')->get();
         return $users;
     }
 } 
