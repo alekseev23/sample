@@ -1,13 +1,4 @@
 {
-    "name": "Learning project",
-    "description":  "Just do lessons",
-    "license": "free",
-    "authors": [
-        {
-            "name": "Alexander Alekseev",
-            "email": "alekseev_ap@mail.ru"
-        }
-    ],
     "require": {
         "twig/twig": "^3.1",
         "illuminate/database": "^8.20"
