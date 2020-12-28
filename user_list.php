@@ -3,13 +3,14 @@ declare(strict_types=1);
 
 require "bootstrap.php";
 
-if ($argc>1) {
-    $users = Controllers\Users::show_users_with_parameter($argv[1]);
+// Проверка наличия аргумента
+if ($argc > 1) {
+    $pattern = $argv[1];
+    $users = User::where('name', 'like', $pattern)->get();
+} else {
+    $users = User::all();
 }
-else {
-    $users = Controllers\Users::show_users();
-}
-
+// Вывод списка пользователей
 foreach ($users as $user) {
     echo "{$user->name}\n";
 }

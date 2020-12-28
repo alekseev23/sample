@@ -1,10 +1,8 @@
 <?php
 declare(strict_types=1);
-namespace Work;
 
 require "vendor/autoload.php";
 require "src/models/User.php";
-require "src/controllers/Users.php";
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Controllers\Users;
@@ -27,4 +25,6 @@ class Database {
         $capsule->bootEloquent();
     }
 }
+$dt = new Database();
+
 
