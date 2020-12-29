@@ -2,5 +2,10 @@
     "require": {
         "twig/twig": "^3.1",
         "illuminate/database": "^8.20"
+    },
+    "autoload": {
+        "psr-4": {
+            "Work\\Model\\": "src/models/"
+        }
     }
 }
