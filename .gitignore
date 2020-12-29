@@ -1,6 +1,6 @@
 readme.txt
 sample.c
-/cache
-/temp
+/cache/
+/temp/
 /.idea/
 /vendor/
