@@ -11,8 +11,8 @@ if ($argc != 2) {
 // Пробуем добавить нового пользователя
 try {
     $name = $argv[1];
-    fields = [ "name" => $name ];
-    $user = Work\Model\User::create($arr);
+    $fields = ["name" => $name];
+    $user = Work\Model\User::create($fields);
     // Выводим сообщение и id пользователя
     echo "User '{$name}' successfully added with id = {$user->id}\n";
 }

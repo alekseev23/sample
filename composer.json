@@ -5,7 +5,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Work\\Model\\": "src/models/"
+            "Work/": "src/"
         }
     },
     "name": "Alex"
