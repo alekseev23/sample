@@ -12,7 +12,7 @@ if ($argc != 2) {
 try {
     $name = $argv[1];
     $fields = ["name" => $name];
-    $user = Work\Models\User::create($fields);
+    $user = \Work\Models\User::create($fields);
     // Выводим сообщение и id пользователя
     echo "User '{$name}' successfully added with id = {$user->id}\n";
 }
