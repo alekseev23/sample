@@ -1,10 +1,13 @@
 <?php
+declare(strict_types=1);
 
-namespace Work\Model;
+namespace Work\Models;
+
 use \Illuminate\Database\Eloquent\Model;
 
-class User extends Model {
+class User extends Model
+{
     protected $table = "Users";
-    protected $fillable = array("name");
-
+    protected $fillable = ["name"];
 }
+

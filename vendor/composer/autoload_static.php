@@ -26,7 +26,7 @@ class ComposerStaticInit2a13a5a0f7083393a1f39b333a9d4680
         ),
         'W' => 
         array (
-            'Work\\Model\\' => 11,
+            'Work\\' => 5,
         ),
         'T' => 
         array (
@@ -73,9 +73,9 @@ class ComposerStaticInit2a13a5a0f7083393a1f39b333a9d4680
         array (
             0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
         ),
-        'Work\\Model\\' => 
+        'Work\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/src/models',
+            0 => __DIR__ . '/../..' . '/src',
         ),
         'Twig\\' => 
         array (

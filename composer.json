@@ -7,6 +7,5 @@
         "psr-4": {
             "Work\\": "src/"
         }
-    },
-    "name": "Alex"
+    }
 }
