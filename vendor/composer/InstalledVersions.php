@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '1015871fe600968ddc820f95323dc993ed684922',
+    'reference' => 'e268b7314c3a93395002eded038058f2e335fdbf',
     'name' => '__root__',
   ),
   'versions' => 
@@ -41,7 +41,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '1015871fe600968ddc820f95323dc993ed684922',
+      'reference' => 'e268b7314c3a93395002eded038058f2e335fdbf',
     ),
     'doctrine/inflector' => 
     array (
@@ -114,6 +114,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'd32c57d8389113742f4a88725a170236470012e2',
+    ),
+    'nikic/fast-route' => 
+    array (
+      'pretty_version' => 'v1.3.0',
+      'version' => '1.3.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '181d480e08d9476e61381e04a71b34dc0432e812',
     ),
     'psr/container' => 
     array (
