@@ -34,8 +34,8 @@ host('test.aapsoftware.ru')
     ->multiplexing(true)
     ->addSshOption('UserKnownHostsFile', '/dev/null')
     ->addSshOption('StrictHostKeyChecking', 'no')
-//    ->set('/var/www/test.aapsoftware.ru/deploy', '~/{{application}}')
-    ->set('deploy_path', '/var/www/test.aapsoftware.ru/deploy');
+//    ->set('/var/www/nginx/deploy', '~/{{application}}')
+    ->set('deploy_path', '/var/www/nginx/deploy');
 //    ->stage('prod');
 
 
