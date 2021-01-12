@@ -12,10 +12,14 @@ class TaskController
     public function process()
     {
         $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
-            $r->addRoute('GET', '/public/index.php/api/v1/users/add', 'UserAdd');
+            /*$r->addRoute('GET', '/public/index.php/api/v1/users/add', 'UserAdd');
             $r->addRoute('GET', '/public/index.php/api/v1/users/list', 'UserList');
             $r->addRoute('GET', '/public/index.php/api/v1/books/add', 'BookAdd');
-            $r->addRoute('GET', '/public/index.php/api/v1/books/list', 'BookList');
+            $r->addRoute('GET', '/public/index.php/api/v1/books/list', 'BookList');*/
+            $r->addRoute('GET', '/index.php/api/v1/users/add', 'UserAdd');
+            $r->addRoute('GET', '/index.php/api/v1/users/list', 'UserList');
+            $r->addRoute('GET', '/index.php/api/v1/books/add', 'BookAdd');
+            $r->addRoute('GET', '/index.php/api/v1/books/list', 'BookList');
         });
 
         // Fetch method and URI from somewhere
