@@ -1,8 +1,6 @@
 <?php
 declare(strict_types=1);
-
 require "bootstrap.php";
-
 // Проверка наличия аргумента
 if ($argc > 1) {
     $pattern = $argv[1];
