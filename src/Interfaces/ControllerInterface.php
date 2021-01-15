@@ -8,11 +8,17 @@ declare(strict_types=1);
 
 namespace Work\Interfaces;
 
-interface ResponseInterface
+interface ControllerInterface
 {
 
     /**
-     * @return string $JsonString
+     * @return integer $errorNumber
      */
-    public function getResult(): string;
+    public function process(): ResponseInterface;
+
+    /**
+     * @parameter array $Request
+     * @return void
+     */
+    public function setRequestParameters(array $request): void;
 }

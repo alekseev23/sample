@@ -13,15 +13,11 @@
 
 declare(strict_types=1);
 
-namespace Work;
-
-error_reporting(-1);
 require '../../bootstrap.php';
 
 $router = new \Work\Routers\Router();
 $controllerName = $router->getController();
-if ($controllerName != '') {
-    $controller = new $controllerName();
-    $controller->process();
-    echo $controller->getResult();
-}
+$controller = new $controllerName();
+$controller->setRequestParameters($_REQUEST);
+$response=$controller->process();
+echo $response->getResult();

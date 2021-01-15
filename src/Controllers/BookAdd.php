@@ -5,44 +5,55 @@ declare(strict_types=1);
 namespace Work\Controllers;
 
 use \Work\Interfaces\ResponseInterface;
+use \Work\Interfaces\ControllerInterface;
+use \Work\Response\Data;
+use \Work\Response\Error;
+use \Work\Response\Success;
 use \Work\Models\Book;
 
-
-class BookAdd implements ResponseInterface
+/**
+ * Class BookAdd
+ * @package Work\Controllers
+ */
+class BookAdd implements ControllerInterface
 {
+    private $res,$Request;
 
-    private $res;
-
-    public function process():int
+    public function setRequestParameters(array $request): void
     {
-        if (isset($_REQUEST['name']))
-        {
-            // Пробуем добавить новую книгу
-            try {
-                $name = $_REQUEST['name'];
-                $fields = ['name' => $_REQUEST['name'], 'author' => $_REQUEST['author'], 'publish_year' => $_REQUEST['publish_year'],
-                    'user_id' => $_REQUEST['user_id']];
-                $book = \Work\Models\Book::create($fields);
-                // Выводим сообщение и id пользователя
-                $this->res['result'] = 'success';
-                $this->res['message'] = 'Book was added';
-                $this->res['id'] = $book->id;
-                return 0;
-            }
-            catch (Throwable $t) { // Если есть проблема, то ругаемся
-                $this->res['result'] = 'error';
-                $this->res['message'] = $t->getMessage();
-                return -2;
-            }
+        $this->Request=$request;
+    }
+
+    public function process(): ResponseInterface
+    {
+        if (!isset($this->Request['name'])) {
+            $response=new \Work\Response\Error();
+            $response->setMessage('Variable [name] not found');
+            return($response);
         }
-        $this->res['result'] = 'error';
-        $this->res['message'] = 'Variable [name] not found';
-        return -1;
+        // Пробуем добавить новую книгу
+        try {
+            $name = $this->Request['name'];
+            $fields = [
+                'name' => $this->Request['name'],
+                'author' => $this->Request['author'],
+                'publish_year' => $this->Request['publish_year'],
+                'user_id' => $this->Request['user_id'],
+                ];
+            $book = \Work\Models\Book::create($fields);
+            // Выводим сообщение и id пользователя
+            $response=new \Work\Response\Success();
+            $response->setMessage('Book was added',$book->id);
+            return($response);
+        } catch (Throwable $t) { // Если есть проблема, то ругаемся
+            $response=new \Work\Response\Error();
+            $response->setMessage($t->getMessage());
+            return($response);
+        }
     }
 
     public function getResult():string
     {
         return json_encode($this->res);
     }
-
 }

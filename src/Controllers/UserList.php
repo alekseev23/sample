@@ -5,35 +5,40 @@ declare(strict_types=1);
 namespace Work\Controllers;
 
 use \Work\Interfaces\ResponseInterface;
+use \Work\Interfaces\ControllerInterface;
 use \Work\Models\User;
 
-
-class UserList implements ResponseInterface
+class UserList implements ControllerInterface
 {
+    private $res,$Request;
 
-    private $errorNumber, $users, $res;
+    public function setRequestParameters(array $request): void
+    {
+        $this->Request=$request;
+    }
 
-    public function process():int
+    public function process(): ResponseInterface
     {
         try {
-            if (isset($_REQUEST['name']))
+            if (isset($this->Request['name']))
             {
                 // Use name for pattern
-                $this->users = \Work\Models\User::where('name', 'like', $_REQUEST['name'])->get();
+                $users = \Work\Models\User::where('name', 'like', $this->Request['name'])->get();
             }
             else {
                 // Показать всех пользователей
-                $this->users = \Work\Models\User::all();
+                $users = \Work\Models\User::all();
             }
         }
         catch (Throwable $t) { // Если есть проблема, то ругаемся
-            $this->res['result'] = 'error';
-            $this->res['message'] = $t->getMessage();
-            $this->errorNumber = -1;
-            return $this->errorNumber;
+            $response=new \Work\Response\Error();
+            $response->setMessage($t->getMessage());
+            return($response);
         }
-        $this->errorNumber = 0;
-        return $this->errorNumber;
+        $response=new \Work\Response\Data();
+        $response->setData($users);
+        return($response);
+
     }
 
     public function getResult():string
@@ -46,5 +51,4 @@ class UserList implements ResponseInterface
             return json_encode($this->res);
         }
     }
-
 }

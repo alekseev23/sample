@@ -5,39 +5,44 @@ declare(strict_types=1);
 namespace Work\Controllers;
 
 use \Work\Interfaces\ResponseInterface;
+use \Work\Interfaces\ControllerInterface;
 use \Work\Models\Book;
 
-class BookList implements ResponseInterface
+class BookList implements ControllerInterface
 {
+    private $res,$Request;
 
-    private $errorNumber, $books, $res;
+    public function setRequestParameters(array $request): void
+    {
+        $this->Request=$request;
+    }
 
-    public function process():int
+    public function process(): ResponseInterface
     {
         try {
-            if (isset($_REQUEST['name']))
+            if (isset($this->Request['name']))
             {
                 // Use name for pattern
-                $this->books = \Work\Models\Book::where('name', 'like', $_REQUEST['name'])->get();
+                $books = \Work\Models\Book::where('name', 'like', $this->Request['name'])->get();
             }
             else {
                 // Показать все книжки
-                $this->books  = \Work\Models\Book::all();
+                $books  = \Work\Models\Book::all();
             }
         }
         catch (Throwable $t) { // Если есть проблема, то ругаемся
-            $this->res['result'] = 'error';
-            $this->res['message'] = $t->getMessage();
-            $this->errorNumber = -1;
-            return $this->errorNumber;
+            $response=new \Work\Response\Error();
+            $response->setMessage($t->getMessage());
+            return($response);
         }
-        $this->errorNumber = 0;
-        return $this->errorNumber;
+        $response=new \Work\Response\Data();
+        $response->setData($books);
+        return($response);
     }
 
     public function getResult():string
     {
-        if ($this->errorNumber==0)
+        if ($this->errorNumber === 0)
         {
             return json_encode($this->books);
         }
@@ -45,5 +50,4 @@ class BookList implements ResponseInterface
             return json_encode($this->res);
         }
     }
-
 }
