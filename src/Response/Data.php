@@ -12,13 +12,15 @@ use \Work\Interfaces\ResponseInterface;
  */
 class Data implements ResponseInterface
 {
-    private $Data;
+    private $data;
 
-    public function setMessage(array $data): void {
-        $this->Data=$data;
+    function __construct(object $data)
+    {
+        $this->data=$data;
     }
 
-    public function getResult(): string {
-        return json_encode($this->Data);
+    public function getResult(): string
+    {
+        return json_encode($this->data);
     }
 }

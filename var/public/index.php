@@ -17,7 +17,6 @@ require '../../bootstrap.php';
 
 $router = new \Work\Routers\Router();
 $controllerName = $router->getController();
-$controller = new $controllerName();
-$controller->setRequestParameters($_REQUEST);
-$response=$controller->process();
+$controller = new $controllerName($_REQUEST);
+$response = $controller->process();
 echo $response->getResult();

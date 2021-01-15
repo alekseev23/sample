@@ -10,15 +10,9 @@ namespace Work\Interfaces;
 
 interface ControllerInterface
 {
-
     /**
-     * @return integer $errorNumber
+     *
+     * @return ResponseInterface
      */
     public function process(): ResponseInterface;
-
-    /**
-     * @parameter array $Request
-     * @return void
-     */
-    public function setRequestParameters(array $request): void;
 }
