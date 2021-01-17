@@ -1,24 +1,33 @@
 <?php
-
 declare(strict_types=1);
 
 namespace Work\Response;
 
-use \Work\Interfaces\ResponseInterface;
+use Work\Interfaces\ResponseInterface;
 
 /**
- * Class BookAdd
+ * Создаём JSON с данными
  * @package Work\Controllers
  */
 class Data implements ResponseInterface
 {
+    /**
+     * @var object
+     */
     private $data;
 
-    function __construct(object $data)
+    /**
+     * Data constructor.
+     * @param object $data
+     */
+    public function __construct(object $data)
     {
-        $this->data=$data;
+        $this->data = $data;
     }
 
+    /**
+     * @return string
+     */
     public function getResult(): string
     {
         return json_encode($this->data);

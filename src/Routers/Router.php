@@ -3,10 +3,15 @@ declare(strict_types=1);
 
 namespace Work\Routers;
 
-use \Work\Interfaces\ResponseInterface;
-
+/**
+ * Находим контроллер для заданных маршрутов
+ * @package Work\Routers
+ */
 class Router
 {
+    /**
+     * @return string
+     */
     public function getController(): string
     {
         $dispatcher = \FastRoute\simpleDispatcher(function (\FastRoute\RouteCollector $r) {

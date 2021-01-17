@@ -3,47 +3,44 @@ declare(strict_types=1);
 
 namespace Work\Controllers;
 
-use \Work\Interfaces\ResponseInterface;
-use \Work\Interfaces\ControllerInterface;
-use \Work\Response\Error;
-use \Work\Response\Success;
-use \Work\Models\Book;
-use \Work\Models\User;
+use Work\Interfaces\ControllerInterface;
+use Work\Interfaces\ResponseInterface;
+use Work\Models\Book;
+use Work\Models\User;
+use Work\Response\Error;
+use Work\Response\Success;
 
 /**
- * Class BookAdd
+ * {@inheritDoc}
+ * Добавляем книгу с id пользователя в базу данных
  * @package Work\Controllers
  */
 class BookAdd extends BaseController implements ControllerInterface
 {
-
+    /**
+     * @return ResponseInterface
+     */
     public function process(): ResponseInterface
     {
         // Проверка ID пользователя
         if (!isset($this->request['user_id'])) {
-            $response = new Error('Variable [user_id] not found');
-            return $response;
+            return new Error('Variable [user_id] not found');
         }
         try {
             if (User::where('id', '=', $this->request['user_id'])->count() == 0) {
-                $response = new Error("No user with user_id = {$this->request['user_id']}");
-                return $response;
+                return new Error("No user with user_id = {$this->request['user_id']}");
             }
-        }
-        catch (Throwable $t) { // Если есть проблема, то ругаемся
-            $response = new Error($t->getMessage());
-            return $response;
+        } catch (Throwable $t) { // Если есть проблема, то ругаемся
+            return new Error($t->getMessage());
         }
         // Проверка года книги
         $publish_year = intval($this->request['publish_year']);
-        if (($publish_year<1900) || ($publish_year>2020)) {
-            $response = new Error('Странный год публикации книги');
-            return $response;
+        if (($publish_year < 1900) || ($publish_year > 2020)) {
+            return new Error('Странный год публикации книги');
         }
-        // оверка названия книги
+        // Проверка названия книги
         if (!isset($this->request['name'])) {
-            $response = new Error('Variable [name] not found');
-            return $response;
+            return new Error('Variable [name] not found');
         }
         // Пробуем добавить новую книгу
         try {
@@ -52,14 +49,12 @@ class BookAdd extends BaseController implements ControllerInterface
                 'author' => $this->request['author'],
                 'publish_year' => $this->request['publish_year'],
                 'user_id' => $this->request['user_id'],
-                ];
+            ];
             $book = Book::create($fields);
             // Выводим сообщение и id пользователя
-            $response = new Success('Book was added',$book->id);
-            return $response;
+            return new Success('Book was added', $book->id);
         } catch (Throwable $t) { // Если есть проблема, то ругаемся
-            $response = new Error($t->getMessage());
-            return $response;
+            return new Error($t->getMessage());
         }
     }
 }
