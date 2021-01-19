@@ -10,7 +10,8 @@ namespace Work\Interfaces;
 interface ResponseInterface
 {
     /**
-     * @return string Json строка с результатами
+     * Возвращает Json строку с результатами
+     * @return string
      */
     public function getResult(): string;
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "72fb631b430a3ee0b66728f361054888",
+    "content-hash": "2da7e0a92f6c96877558d113c8e0b4b0",
     "packages": [
         {
             "name": "composer/semver",
@@ -1007,6 +1007,60 @@
             ],
             "description": "PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards",
             "homepage": "https://github.com/squizlabs/PHP_CodeSniffer"
+        },
+        {
+            "name": "pharhub/phpstan",
+            "version": "0.12.67.0",
+            "dist": {
+                "type": "file",
+                "url": "https://github.com/phpstan/phpstan/releases/download/0.12.67/phpstan.phar"
+            },
+            "require": {
+                "php": "^7.1|^8.0"
+            },
+            "replace": {
+                "phpstan/phpstan": "self.version"
+            },
+            "bin": [
+                "phpstan.phar"
+            ],
+            "type": "library",
+            "notification-url": "https://downloads.pharhub.dev/notify",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHP Static Analysis Tool - discover bugs in your code without running it",
+            "homepage": "https://github.com/phpstan/phpstan"
+        },
+        {
+            "name": "pharhub/phpunit",
+            "version": "9.5.1.0",
+            "dist": {
+                "type": "file",
+                "url": "https://downloads.pharhub.dev/phpunit/phpunit.phar?v=9.5.1.0"
+            },
+            "require": {
+                "ext-dom": "*",
+                "ext-json": "*",
+                "ext-libxml": "*",
+                "ext-mbstring": "*",
+                "ext-xml": "*",
+                "ext-xmlwriter": "*",
+                "php": ">=7.3"
+            },
+            "replace": {
+                "phpunit/phpunit": "self.version"
+            },
+            "bin": [
+                "phpunit.phar"
+            ],
+            "type": "library",
+            "notification-url": "https://downloads.pharhub.dev/notify",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "The PHP Unit Testing framework",
+            "homepage": "https://phpunit.de/"
         },
         {
             "name": "php-cs-fixer/diff",

@@ -1048,6 +1048,66 @@
             "install-path": "../pharhub/phpcs"
         },
         {
+            "name": "pharhub/phpstan",
+            "version": "0.12.67.0",
+            "version_normalized": "0.12.67.0",
+            "dist": {
+                "type": "file",
+                "url": "https://github.com/phpstan/phpstan/releases/download/0.12.67/phpstan.phar"
+            },
+            "require": {
+                "php": "^7.1|^8.0"
+            },
+            "replace": {
+                "phpstan/phpstan": "self.version"
+            },
+            "bin": [
+                "phpstan.phar"
+            ],
+            "type": "library",
+            "installation-source": "dist",
+            "notification-url": "https://downloads.pharhub.dev/notify",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHP Static Analysis Tool - discover bugs in your code without running it",
+            "homepage": "https://github.com/phpstan/phpstan",
+            "install-path": "../pharhub/phpstan"
+        },
+        {
+            "name": "pharhub/phpunit",
+            "version": "9.5.1.0",
+            "version_normalized": "9.5.1.0",
+            "dist": {
+                "type": "file",
+                "url": "https://downloads.pharhub.dev/phpunit/phpunit.phar?v=9.5.1.0"
+            },
+            "require": {
+                "ext-dom": "*",
+                "ext-json": "*",
+                "ext-libxml": "*",
+                "ext-mbstring": "*",
+                "ext-xml": "*",
+                "ext-xmlwriter": "*",
+                "php": ">=7.3"
+            },
+            "replace": {
+                "phpunit/phpunit": "self.version"
+            },
+            "bin": [
+                "phpunit.phar"
+            ],
+            "type": "library",
+            "installation-source": "dist",
+            "notification-url": "https://downloads.pharhub.dev/notify",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "The PHP Unit Testing framework",
+            "homepage": "https://phpunit.de/",
+            "install-path": "../pharhub/phpunit"
+        },
+        {
             "name": "php-cs-fixer/diff",
             "version": "v1.3.1",
             "version_normalized": "1.3.1.0",

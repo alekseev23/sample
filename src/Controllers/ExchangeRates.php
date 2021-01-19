@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Work\Controllers;
 
-use Work\Interfaces\ControllerInterface;
+use Throwable;
 use Work\Interfaces\ResponseInterface;
 use Work\Response\Data;
 use Work\Response\Error;
@@ -12,7 +12,7 @@ use Work\Response\Error;
  * Получаем курс доллара и евро к рублю и отдаём в виде объекта
  * @package Work\Controllers
  */
-class ExchangeRates extends BaseController implements ControllerInterface
+class ExchangeRates extends BaseController
 {
     /**
      * @return ResponseInterface
@@ -30,12 +30,13 @@ class ExchangeRates extends BaseController implements ControllerInterface
             $output = curl_exec($ch);
             // close curl resource to free up system resources
             curl_close($ch);
+
             // Из строки получаем объект
             $data = json_decode($output);
             // Создаём новый объект с евро и доллараом
             return new Data((object)['USD' => $data->Valute->USD->Value, 'EUR' => $data->Valute->EUR->Value]);
         } catch (Throwable $t) { // Если есть проблема, то ругаемся
-            return new Error('Can\'t connect to server');
+            return new Error('Невозможно подключиться к серверу');
         }
     }
 }

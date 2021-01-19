@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     /**
-     * @var string
+     * @var string $table
      */
     protected $table = 'Books';
 

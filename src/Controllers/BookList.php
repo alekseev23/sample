@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Work\Controllers;
 
-use Work\Interfaces\ControllerInterface;
+use Throwable;
 use Work\Interfaces\ResponseInterface;
 use Work\Models\Book;
 use Work\Response\Data;
@@ -13,7 +13,7 @@ use Work\Response\Error;
  * Получаем список книг
  * @package Work\Controllers
  */
-class BookList extends BaseController implements ControllerInterface
+class BookList extends BaseController
 {
     /**
      * @return ResponseInterface

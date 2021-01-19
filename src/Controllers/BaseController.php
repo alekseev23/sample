@@ -3,16 +3,18 @@ declare(strict_types=1);
 
 namespace Work\Controllers;
 
+use Work\Interfaces\ControllerInterface;
+
 /**
  * Базовый класс для всех контроллеров. Содержит конструктор, которому передаётся объект $_REQUEST
  * @package Work\Controllers
  */
-abstract class BaseController
+abstract class BaseController implements ControllerInterface
 {
     /**
-     * @var request переменные запросы
+     * @var array $request переменные запроса
      */
-    protected $request;
+    protected array $request;
 
     /**
      * Получает переменные запроса и сохраняет в локальный объект

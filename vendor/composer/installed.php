@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '53937291397cca4c2e00f67ac41ccc08ccc9876c',
+    'reference' => 'cf7b01278da54d081edb24287507aa0de70e302e',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '53937291397cca4c2e00f67ac41ccc08ccc9876c',
+      'reference' => 'cf7b01278da54d081edb24287507aa0de70e302e',
     ),
     'composer/semver' => 
     array (
@@ -155,6 +155,24 @@
       ),
       'reference' => NULL,
     ),
+    'pharhub/phpstan' => 
+    array (
+      'pretty_version' => '0.12.67.0',
+      'version' => '0.12.67.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => NULL,
+    ),
+    'pharhub/phpunit' => 
+    array (
+      'pretty_version' => '9.5.1.0',
+      'version' => '9.5.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => NULL,
+    ),
     'php-cs-fixer/diff' => 
     array (
       'pretty_version' => 'v1.3.1',
@@ -163,6 +181,20 @@
       array (
       ),
       'reference' => 'dbd31aeb251639ac0b9e7e29405c1441907f5759',
+    ),
+    'phpstan/phpstan' => 
+    array (
+      'replaced' => 
+      array (
+        0 => '0.12.67.0',
+      ),
+    ),
+    'phpunit/phpunit' => 
+    array (
+      'replaced' => 
+      array (
+        0 => '9.5.1.0',
+      ),
     ),
     'psr/container' => 
     array (

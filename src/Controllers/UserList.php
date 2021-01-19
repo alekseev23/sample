@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Work\Controllers;
 
-use Work\Interfaces\ControllerInterface;
+use Throwable;
 use Work\Interfaces\ResponseInterface;
 use Work\Models\User;
 use Work\Response\Data;
@@ -13,7 +13,7 @@ use Work\Response\Error;
  * Показать список пользователей
  * @package Work\Controllers
  */
-class UserList extends BaseController implements ControllerInterface
+class UserList extends BaseController
 {
     /**
      * @return ResponseInterface
