@@ -26,7 +26,7 @@ class Datetime2Date extends BaseController
         }
         // Пробуем преобразовать в DATETIME
         try {
-            $dt = DateTime::createFromFormat ('Y-m-d h:m:s', $this->request['datetime']);
+            $dt = DateTime::createFromFormat('Y-m-d h:m:s', $this->request['datetime']);
             return new Data((object)[
                 'date' => $dt->format("Y-m-d"),
                 'timezone' => $dt->getTimezone()->getName()
