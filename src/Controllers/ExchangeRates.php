@@ -20,17 +20,12 @@ class ExchangeRates extends BaseController
     public function process(): ResponseInterface
     {
         try {
-            // create curl resource
+            // Получаем данные с помощью CURL
             $ch = curl_init();
-            // set url
-            curl_setopt($ch, CURLOPT_URL, "https://www.cbr-xml-daily.ru/daily_json.js");
-            //return the transfer as a string
+            curl_setopt($ch, CURLOPT_URL, 'https://www.cbr-xml-daily.ru/daily_json.js');
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            // $output contains the output string
             $output = curl_exec($ch);
-            // close curl resource to free up system resources
             curl_close($ch);
-
             // Из строки получаем объект
             $data = json_decode($output);
             // Создаём новый объект с евро и доллараом

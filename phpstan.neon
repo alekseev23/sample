@@ -1,0 +1,11 @@
+parameters:
+	ignoreErrors:
+		- '#Call to an undefined static method [a-zA-Z0-9\\_]+::create\(\)#'
+		- '#Call to an undefined static method [a-zA-Z0-9\\_]+::where\(\)#'
+		- '#Cannot call method format\(\) on DateTime|false.\(\)#'
+		- '#getTimestamp\(\)#'
+		- '#getResult\(\)#'
+		- '#getTimezone\(\)#'
+		- '#Call to an undefined method [a-zA-Z0-9\\_]+::expects\(\)#'
+		- '#Access to an undefined property PHPUnit_Framework_MockObject_MockObject::\$[a-zA-Z0-9_]+#'
+		- '#Call to an undefined method PHPUnit_Framework_MockObject_MockObject::[a-zA-Z0-9_]+\(\)#'

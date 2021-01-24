@@ -1,3 +1,3 @@
 #/usr/bin/bash
 
-./vendor/bin/phpunit.phar ./tests/FirstTest.php
+./vendor/bin/phpunit.phar ./tests
