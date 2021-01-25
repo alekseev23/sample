@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'cf7b01278da54d081edb24287507aa0de70e302e',
+    'reference' => '124d2a0954116063a84d92b33609f18bc501f69d',
     'name' => '__root__',
   ),
   'versions' => 
@@ -41,7 +41,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'cf7b01278da54d081edb24287507aa0de70e302e',
+      'reference' => '124d2a0954116063a84d92b33609f18bc501f69d',
     ),
     'composer/semver' => 
     array (

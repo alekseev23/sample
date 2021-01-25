@@ -7,6 +7,16 @@ date_default_timezone_set('Europe/Moscow');
 require "vendor/autoload.php";
 
 use Illuminate\Database\Capsule\Manager as Capsule;
+use Symfony\Component\EventDispatcher\EventDispatcher;
+use Work\Events\DemoEvent;
+use Work\Listeners\DemoListener;
+
+// init event dispatcher
+$dispatcher = new EventDispatcher();
+
+// register listener for the 'demo.event' event
+$listener = new DemoListener();
+$dispatcher->addListener('demo.event', array($listener, 'onDemoEvent'));
 
 $capsule = new Capsule;
 $capsule->addConnection([

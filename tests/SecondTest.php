@@ -7,7 +7,6 @@ require_once('test_bootstrap.php');
 
 use PHPUnit\Framework\TestCase;
 
-
 class SecondTest extends TestCase
 {
     /**
