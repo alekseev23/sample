@@ -3,17 +3,15 @@ declare(strict_types=1);
 
 namespace Work\Tests;
 
-require_once('test_bootstrap.php');
-
 use PHPUnit\Framework\TestCase;
 use Work\Response\Error;
 
-class HttpTest extends TestCase
+class ExchangeRatesControllerTest extends TestCase
 {
     /**
      * Тестируем контроллер ExchangeRates
      */
-    public function testExchangeRates()
+    public function testControllerSuccessOnExchangeRates()
     {
         try {
             // Получаем данные с помощью CURL
@@ -26,10 +24,10 @@ class HttpTest extends TestCase
             // Из строки получаем объект
             $data = json_decode($output);
             // Проверяем утверждения
-            $this->assertLessThan(73.5, $data->USD,'Доллар не может так сильно вырасти!');
-            $this->assertGreaterThan(50, $data->USD,'Доллар не может так сильно упасть');
-            $this->assertLessThan(100, $data->EUR,'Евро не может так сильно вырасти!');
-            $this->assertGreaterThan(70, $data->EUR,'Евро не может так сильно упасть');
+            $this->assertLessThan(73.5, $data->USD);
+            $this->assertGreaterThan(50, $data->USD);
+            $this->assertLessThan(100, $data->EUR);
+            $this->assertGreaterThan(70, $data->EUR);
         } catch (Throwable $t) { // Если есть проблема, то ругаемся
             return new Error('Невозможно подключиться к серверу');
         }

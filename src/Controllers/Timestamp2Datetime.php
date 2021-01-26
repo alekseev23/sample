@@ -30,7 +30,7 @@ class Timestamp2Datetime extends BaseController
         // Не задано имя переменной
         if (!isset($this->request['timestamp'])) {
             // dispatch
-            $dispatcher->dispatch(DemoEvent::NAME, new DemoEvent());
+            //$dispatcher->dispatch(DemoEvent::NAME, new DemoEvent());
             return new Error('Переменная [timestamp] не найдена');
         }
         // Пробуем преобразовать в датувремя
@@ -43,7 +43,7 @@ class Timestamp2Datetime extends BaseController
             ]);
         } catch (Throwable $t) { // Если есть проблема, то ругаемся
             // dispatch
-            $dispatcher->dispatch(DemoEvent::NAME, new DemoEvent());
+            //$dispatcher->dispatch(DemoEvent::NAME, new DemoEvent());
 
             return new Error($t->getMessage());
         }
