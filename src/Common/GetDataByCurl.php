@@ -6,8 +6,8 @@ namespace Work\Common;
 use Throwable;
 
 /**
- * Получаем курс доллара и евро к рублю и отдаём в виде объекта
- * @package Work\Controllers
+ * Получаем данные используя Curl
+ * @package Work\Common
  */
 class GetDataByCurl
 {
@@ -26,7 +26,7 @@ class GetDataByCurl
      * @param int $timeout
      * @return bool
      */
-    public function get(string $url,int $timeout): bool
+    public function get(string $url, int $timeout): bool
     {
         try {
             $this->error = "";
@@ -37,7 +37,9 @@ class GetDataByCurl
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
             $s = curl_exec($ch);
             // Ошибка Curl
-            if (curl_errno($ch)) $this->error = curl_error($ch);
+            if (curl_errno($ch)) {
+                $this->error = curl_error($ch);
+            }
             curl_close($ch);
             if ($s !== false) {
                 $this->data = strval($s);
@@ -45,7 +47,7 @@ class GetDataByCurl
             }
             return false;
         } catch (Throwable $t) { // Если есть проблема, то ругаемся
-            echo $t->getMessage();
+            $this->error = $t->getMessage();
             return false;
         }
     }
@@ -55,7 +57,7 @@ class GetDataByCurl
      */
     public function getData(): string
     {
-        return($this->data);
+        return $this->data;
     }
 
     /**
@@ -63,7 +65,6 @@ class GetDataByCurl
      */
     public function getError(): string
     {
-        return($this->error);
+        return $this->error;
     }
-
 }

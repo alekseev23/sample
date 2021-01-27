@@ -17,6 +17,6 @@ class NotFound extends BaseController
      */
     public function process(): ResponseInterface
     {
-        return new Error('Not found');
+        return new Error('Not found', 404);
     }
 }

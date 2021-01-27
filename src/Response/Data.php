@@ -30,6 +30,14 @@ class Data implements ResponseInterface
      */
     public function getResult(): string
     {
-        return json_encode($this->data);
+        return json_encode($this->data, JSON_UNESCAPED_UNICODE);
+    }
+
+    /**
+     * @return string
+     */
+    public function getHeader(): string
+    {
+        return $_SERVER["SERVER_PROTOCOL"] . " 200 OK";
     }
 }

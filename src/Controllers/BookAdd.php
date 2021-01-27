@@ -24,24 +24,24 @@ class BookAdd extends BaseController
     {
         // Проверка ID пользователя
         if (!isset($this->request['user_id'])) {
-            return new Error('Variable [user_id] not found');
+            return new Error('Variable [user_id] not found', 404);
         }
         try {
             if (User::where('id', '=', $this->request['user_id'])->count() == 0) {
-                return new Error('Нет пользователя с таким user_id');
+                return new Error('Нет пользователя с таким user_id', 404);
             }
         } catch (Throwable $t) { // Если есть проблема, то ругаемся
-            return new Error($t->getMessage());
+            return new Error($t->getMessage(), 500);
         }
 
         // Проверка года книги
         $publish_year = intval($this->request['publish_year']);
         if (($publish_year < 1900) || ($publish_year > 2020)) {
-            return new Error('Странный год публикации книги');
+            return new Error('Странный год публикации книги', 500);
         }
         // Проверка названия книги
         if (!isset($this->request['name'])) {
-            return new Error('Переменная [name] не найдена');
+            return new Error('Переменная [name] не найдена', 404);
         }
 
         // Пробуем добавить новую книгу
@@ -57,7 +57,7 @@ class BookAdd extends BaseController
             // Выводим сообщение и id пользователя
             return new Success('Книга добавлена', $book->id);
         } catch (Throwable $t) { // Если есть проблема, то ругаемся
-            return new Error($t->getMessage());
+            return new Error($t->getMessage(), 500);
         }
     }
 }

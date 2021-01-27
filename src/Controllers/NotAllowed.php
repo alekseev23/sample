@@ -17,6 +17,6 @@ class NotAllowed extends BaseController
      */
     public function process(): ResponseInterface
     {
-        return new Error('Not allowed');
+        return new Error('Not allowed', 405);
     }
 }

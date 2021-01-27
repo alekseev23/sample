@@ -22,7 +22,7 @@ class Datetime2Timestamp extends BaseController
     {
         // Не задано имя переменной
         if (!isset($this->request['datetime'])) {
-            return new Error('Переменная [datetime] не найдена');
+            return new Error('Переменная [datetime] не найдена', 404);
         }
         // Пробуем преобразовать в DATETIME
         try {
@@ -31,7 +31,7 @@ class Datetime2Timestamp extends BaseController
                 'timestamp' => $dt->getTimestamp()
             ]);
         } catch (Throwable $t) { // Если есть проблема, то ругаемся
-            return new Error($t->getMessage());
+            return new Error($t->getMessage(), 500);
         }
     }
 }

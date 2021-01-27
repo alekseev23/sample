@@ -13,8 +13,7 @@
     "autoload": {
         "psr-4": {
             "Work\\": "src/",
-            "Work\\Tests\\": "tests/",
-            "Symfony\\Component\\": "vendor/symfony/event-dispatcher/"
+            "Work\\Tests\\": "tests/"
         }
     },
     "authors": [

@@ -29,7 +29,7 @@ class UserList extends BaseController
                 $users = User::all();
             }
         } catch (Throwable $t) { // Если есть проблема, то ругаемся
-            return new Error($t->getMessage());
+            return new Error($t->getMessage(), 500);
         }
         return new Data($users);
     }

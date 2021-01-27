@@ -12,13 +12,13 @@ use Work\Interfaces\ControllerInterface;
 abstract class BaseController implements ControllerInterface
 {
     /**
-     * @var array $request переменные запроса
+     * @var array<mixed> $request переменные запроса
      */
     protected array $request;
 
     /**
      * Получает переменные запроса и сохраняет в локальный объект
-     * @param array $request
+     * @param array<mixed> $request
      */
     public function __construct(array $request)
     {

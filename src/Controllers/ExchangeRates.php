@@ -3,11 +3,10 @@ declare(strict_types=1);
 
 namespace Work\Controllers;
 
-use Throwable;
+use Work\Common\GetDataByCurl;
 use Work\Interfaces\ResponseInterface;
 use Work\Response\Data;
 use Work\Response\Error;
-use Work\Common\GetDataByCurl;
 
 /**
  * Получаем курс доллара и евро к рублю и отдаём в виде объекта
@@ -25,7 +24,6 @@ class ExchangeRates extends BaseController
             $data = json_decode($curl->getData());
             // Создаём новый объект с евро и доллараом
             return new Data((object)['USD' => $data->Valute->USD->Value, 'EUR' => $data->Valute->EUR->Value]);
-        }
-        else return new Error($curl->getError());
+        } else return new Error($curl->getError(), 500);
     }
 }

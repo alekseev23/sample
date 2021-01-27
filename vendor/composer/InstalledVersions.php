@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '124d2a0954116063a84d92b33609f18bc501f69d',
+    'reference' => '34b91dc5e3ca9603175277e1dd3ffe1d742a3564',
     'name' => '__root__',
   ),
   'versions' => 
@@ -41,7 +41,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '124d2a0954116063a84d92b33609f18bc501f69d',
+      'reference' => '34b91dc5e3ca9603175277e1dd3ffe1d742a3564',
     ),
     'composer/semver' => 
     array (
@@ -90,26 +90,26 @@ private static $installed = array (
     ),
     'friendsofphp/php-cs-fixer' => 
     array (
-      'pretty_version' => 'v2.17.3',
-      'version' => '2.17.3.0',
+      'pretty_version' => 'v2.18.2',
+      'version' => '2.18.2.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'bd32f5dd72cdfc7b53f54077f980e144bfa2f595',
+      'reference' => '18f8c9d184ba777380794a389fabc179896ba913',
     ),
     'illuminate/collections' => 
     array (
-      'pretty_version' => 'v8.22.1',
-      'version' => '8.22.1.0',
+      'pretty_version' => 'v8.24.0',
+      'version' => '8.24.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'fa1f5a2809a777040ab1616527dc2e66f4ae93f4',
+      'reference' => '3c968b76c395c4ac94d378d4bdeea1af0e8ad44c',
     ),
     'illuminate/container' => 
     array (
-      'pretty_version' => 'v8.22.1',
-      'version' => '8.22.1.0',
+      'pretty_version' => 'v8.24.0',
+      'version' => '8.24.0.0',
       'aliases' => 
       array (
       ),
@@ -117,26 +117,26 @@ private static $installed = array (
     ),
     'illuminate/contracts' => 
     array (
-      'pretty_version' => 'v8.22.1',
-      'version' => '8.22.1.0',
+      'pretty_version' => 'v8.24.0',
+      'version' => '8.24.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '073109b521aec104f11c5cf5aded97aa0e63f313',
+      'reference' => 'b91459a9a0bd0de204c3cae6859ebd02dbcee6c6',
     ),
     'illuminate/database' => 
     array (
-      'pretty_version' => 'v8.22.1',
-      'version' => '8.22.1.0',
+      'pretty_version' => 'v8.24.0',
+      'version' => '8.24.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '4a2040c25d28315be005784a9ea4c2efb2a95a27',
+      'reference' => '49d9fb12529d9dfee26d98f9331c59791b3f55e9',
     ),
     'illuminate/macroable' => 
     array (
-      'pretty_version' => 'v8.22.1',
-      'version' => '8.22.1.0',
+      'pretty_version' => 'v8.24.0',
+      'version' => '8.24.0.0',
       'aliases' => 
       array (
       ),
@@ -144,12 +144,12 @@ private static $installed = array (
     ),
     'illuminate/support' => 
     array (
-      'pretty_version' => 'v8.22.1',
-      'version' => '8.22.1.0',
+      'pretty_version' => 'v8.24.0',
+      'version' => '8.24.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '6a516676a83d2a73c46eaf7907f730e86ef60da5',
+      'reference' => 'b5f12bc62bfca920d0b3379da7a7d282999343af',
     ),
     'nesbot/carbon' => 
     array (
@@ -180,8 +180,8 @@ private static $installed = array (
     ),
     'pharhub/phpstan' => 
     array (
-      'pretty_version' => '0.12.67.0',
-      'version' => '0.12.67.0',
+      'pretty_version' => '0.12.69.0',
+      'version' => '0.12.69.0',
       'aliases' => 
       array (
       ),
@@ -209,7 +209,7 @@ private static $installed = array (
     array (
       'replaced' => 
       array (
-        0 => '0.12.67.0',
+        0 => '0.12.69.0',
       ),
     ),
     'phpunit/phpunit' => 

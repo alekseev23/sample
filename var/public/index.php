@@ -18,4 +18,5 @@ $router = new \Work\Routers\Router();
 $controllerName = $router->getController();
 $controller = new $controllerName($_REQUEST);
 $response = $controller->process();
+header($response->getHeader());
 echo $response->getResult();

@@ -22,7 +22,7 @@ class UserAdd extends BaseController
     {
         // Не задано имя пользователя
         if (!isset($this->request['name'])) {
-            return new Error('Переменная [name] не найдена');
+            return new Error('Переменная [name] не найдена', 404);
         }
 
         // Пробуем добавить нового пользователя
@@ -34,7 +34,7 @@ class UserAdd extends BaseController
             // Выводим сообщение и id пользователя
             return new Success('Пользователь добавлен', $user->id);
         } catch (Throwable $t) { // Если есть проблема, то ругаемся
-            return new Error($t->getMessage());
+            return new Error($t->getMessage(), 500);
         }
     }
 }
