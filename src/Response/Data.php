@@ -14,15 +14,23 @@ class Data implements ResponseInterface
     /**
      * @var object
      */
-    private $data;
+    private object $data;
+
+    /**
+     * @var int
+     * Код ответа
+     */
+    private int $code;
 
     /**
      * Data constructor.
      * @param object $data
+     * @param int $code
      */
-    public function __construct(object $data)
+    public function __construct(object $data,int $code)
     {
         $this->data = $data;
+        $this->code = $code;
     }
 
     /**
@@ -34,10 +42,11 @@ class Data implements ResponseInterface
     }
 
     /**
-     * @return string
+     * Возвращает код ответа
+     * @return int
      */
-    public function getHeader(): string
+    public function getCode(): int
     {
-        return $_SERVER["SERVER_PROTOCOL"] . " 200 OK";
+        return $this->code;
     }
 }

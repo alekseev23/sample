@@ -32,7 +32,7 @@ class UserAdd extends BaseController
             $user = User::create($fields);
 
             // Выводим сообщение и id пользователя
-            return new Success('Пользователь добавлен', $user->id);
+            return new Success('Пользователь добавлен', $user->id,200);
         } catch (Throwable $t) { // Если есть проблема, то ругаемся
             return new Error($t->getMessage(), 500);
         }

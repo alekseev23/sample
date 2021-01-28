@@ -23,7 +23,7 @@ class ExchangeRates extends BaseController
         if ($curl->get('https://www.cbr-xml-daily.ru/daily_json.js', 3)) {
             $data = json_decode($curl->getData());
             // Создаём новый объект с евро и доллараом
-            return new Data((object)['USD' => $data->Valute->USD->Value, 'EUR' => $data->Valute->EUR->Value]);
+            return new Data((object)['USD' => $data->Valute->USD->Value, 'EUR' => $data->Valute->EUR->Value],200);
         } else return new Error($curl->getError(), 500);
     }
 }

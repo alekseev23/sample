@@ -55,7 +55,7 @@ class BookAdd extends BaseController
             $book = Book::create($fields);
 
             // Выводим сообщение и id пользователя
-            return new Success('Книга добавлена', $book->id);
+            return new Success('Книга добавлена', $book->id,200);
         } catch (Throwable $t) { // Если есть проблема, то ругаемся
             return new Error($t->getMessage(), 500);
         }

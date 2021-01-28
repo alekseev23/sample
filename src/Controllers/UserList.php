@@ -31,6 +31,6 @@ class UserList extends BaseController
         } catch (Throwable $t) { // Если есть проблема, то ругаемся
             return new Error($t->getMessage(), 500);
         }
-        return new Data($users);
+        return new Data($users,200);
     }
 }

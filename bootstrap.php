@@ -7,12 +7,10 @@ date_default_timezone_set('Europe/Moscow');
 require "vendor/autoload.php";
 
 use Illuminate\Database\Capsule\Manager as Capsule;
-use Symfony\Component\EventDispatcher\EventDispatcher;
-use Work\Events\DemoEvent;
 use Work\Listeners\DemoListener;
 
 // init event dispatcher
-$dispatcher = new EventDispatcher();
+$dispatcher = new \Symfony\Component\EventDispatcher\EventDispatcher();
 
 // register listener for the 'demo.event' event
 $listener = new DemoListener();
@@ -31,3 +29,6 @@ $capsule->addConnection([
 ]);
 $capsule->bootEloquent();
 
+// Connecting to Redis server on localhost
+$redis = new Redis();
+$redis->connect('127.0.0.1', 6379);

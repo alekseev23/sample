@@ -19,17 +19,25 @@ class Success implements ResponseInterface
     /**
      * @var int
      */
-    private $id;
+    private int $id;
+
+    /**
+     * @var int
+     * Код ответа
+     */
+    private int $code;
 
     /**
      * Success constructor.
      * @param string $message
      * @param int $id
+     * @param int $code
      */
-    public function __construct(string $message, int $id)
+    public function __construct(string $message, int $id,int $code)
     {
         $this->message = $message;
         $this->id = $id;
+        $this->code = $code;
     }
 
     /**
@@ -41,10 +49,11 @@ class Success implements ResponseInterface
     }
 
     /**
-     * @return string
+     * Возвращает код ответа
+     * @return int
      */
-    public function getHeader(): string
+    public function getCode(): int
     {
-        return $_SERVER["SERVER_PROTOCOL"] . " 200 OK";
+        return $this->code;
     }
 }

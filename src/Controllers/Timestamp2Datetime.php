@@ -22,12 +22,10 @@ class Timestamp2Datetime extends BaseController
      */
     public function process(): ResponseInterface
     {
-        global $dispatcher;
-
         // Не задано имя переменной
         if (!isset($this->request['timestamp'])) {
             // dispatch
-            $dispatcher->dispatch(DemoEvent::NAME, new DemoEvent());
+            //$this->dispatcher->dispatch(DemoEvent::NAME, new DemoEvent());
             return new Error('Переменная [timestamp] не найдена', 404);
         }
         // Пробуем преобразовать в датувремя
@@ -36,12 +34,12 @@ class Timestamp2Datetime extends BaseController
             $dt->setTimestamp(intval($this->request['timestamp']));
 
             // dispatch
-            $dispatcher->dispatch(DemoEvent::NAME, new DemoEvent());
+            //$this->dispatcher->dispatch(DemoEvent::NAME, new DemoEvent());
 
             return new Data((object)[
                 'datetime' => $dt->format("Y-m-d h:i:s"),
                 'timezone' => $dt->getTimezone()->getName()
-            ]);
+            ],200);
         } catch (Throwable $t) { // Если есть проблема, то ругаемся
             return new Error($t->getMessage(), 500);
         }

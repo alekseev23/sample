@@ -15,16 +15,18 @@ class Error implements ResponseInterface
     /**
      * @var string
      */
-    private $message;
+    private string $message;
 
     /**
-     * @var Код ответа
+     * @var int
+     * Код ответа
      */
-    private $code;
+    private int $code;
 
     /**
      * Error constructor.
      * @param string $message
+     * @param int $code
      */
     public function __construct(string $message, int $code)
     {
@@ -42,17 +44,11 @@ class Error implements ResponseInterface
     }
 
     /**
-     * @return string
-     * Возвращает HTTP заголовок для отправки клиенту
+     * Возвращает код ответа
+     * @return int
      */
-    public function getHeader(): string
+    public function getCode(): int
     {
-        if ($this->code == 404) {
-            return $_SERVER["SERVER_PROTOCOL"] . " 404 Not found";
-        }
-        if ($this->code == 405) {
-            return $_SERVER["SERVER_PROTOCOL"] . " 405 Method Not Allowed";
-        }
-        return $_SERVER["SERVER_PROTOCOL"] . " 500 Internal server error";
+        return $this->code;
     }
 }

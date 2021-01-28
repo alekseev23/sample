@@ -24,6 +24,9 @@ class Router
             $r->addRoute('GET', '/index.php/api/v1/convert/timestamp2datetime', '\Work\Controllers\Timestamp2Datetime');
             $r->addRoute('GET', '/index.php/api/v1/convert/datetime2timestamp', '\Work\Controllers\Datetime2Timestamp');
             $r->addRoute('GET', '/index.php/api/v1/convert/datetime2date', '\Work\Controllers\Datetime2Date');
+
+            $r->addRoute('GET', '/index.php/api/v1/redis/set', '\Work\Controllers\SetKeyToRedis');
+            $r->addRoute('GET', '/index.php/api/v1/redis/get', '\Work\Controllers\GetKeyFromRedis');
         });
         // Fetch method and URI from somewhere
         $httpMethod = $_SERVER['REQUEST_METHOD'];

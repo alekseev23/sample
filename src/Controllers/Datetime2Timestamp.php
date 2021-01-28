@@ -29,7 +29,7 @@ class Datetime2Timestamp extends BaseController
             $dt = DateTime::createFromFormat('Y-m-d h:i:s', $this->request['datetime']);
             return new Data((object)[
                 'timestamp' => $dt->getTimestamp()
-            ]);
+            ],200);
         } catch (Throwable $t) { // Если есть проблема, то ругаемся
             return new Error($t->getMessage(), 500);
         }

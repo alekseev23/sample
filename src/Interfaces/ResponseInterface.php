@@ -14,4 +14,10 @@ interface ResponseInterface
      * @return string
      */
     public function getResult(): string;
+
+    /**
+     * Возвращает код ответа
+     * @return int
+     */
+    public function getCode(): int;
 }

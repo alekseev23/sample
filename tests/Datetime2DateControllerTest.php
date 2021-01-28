@@ -8,13 +8,21 @@ use Work\Common\GetDataByCurl;
 
 class Datetime2DateControllerTest extends TestCase
 {
+    /**
+     * Тестируем контроллер Datetime2Date
+     */
+    public function testControllerSuccessOnDatetime2Date()
+    {
+        $controller = new \Work\Controllers\Datetime2Date(['datetime' => '2014-01-01 12:48:15']);
+        $response = $controller->process();
+        $this->assertEquals('{"date":"2014-01-01","timezone":"Europe\/Moscow"}', $response->getResult());
+    }
+
     public function addDataProvider(): array
     {
         return [
-            ['2014-01-01 12:48:15', '{"date":"2014-01-01","timezone":"Europe\/Moscow"}', true],
-            ['2014-01-02 12:48:15', '{"date":"2014-01-01","timezone":"Europe\/Moscow"}', false],
-            ['2014-01-03 12:48:15', '{"date":"2014-01-01","timezone":"Europe\/Moscow"}', false],
-            ['abc', '', false],
+            ['2', 'datetime', '{"result":"error","message":"Call to a member function format() on bool"}'],
+            ['abc', 'datetime1', '{"result":"error","message":"Переменная [datetime] не найдена"}'],
         ];
     }
 
@@ -22,23 +30,15 @@ class Datetime2DateControllerTest extends TestCase
      * @dataProvider addDataProvider
      * Тестируем контроллер Datetime2Date
      * @param string $testValue
+     * @param string $paramName
      * @param string $expectedValue
-     * @param bool $equals
      */
-    public function testControllerSuccessOnDatetime2Date(string $testValue, string $expectedValue, bool $equals)
+    public function testControllerFailureOnDatetime2Date(string $testValue, string $paramName, string $expectedValue)
     {
-        $controller = new \Work\Controllers\Datetime2Date(['datetime' => $testValue]);
+        $controller = new \Work\Controllers\Datetime2Date([$paramName => $testValue]);
         $response = $controller->process();
-        if ($response instanceof \Work\Response\Error) {
-            $this->assertFalse($equals);
-        } else {
-            $str = $response->getResult();
-            if ($equals) {
-                $this->assertEquals($expectedValue, $str);
-            } else {
-                $this->assertNotEquals($expectedValue, $str);
-            }
-        }
+        $this->assertInstanceOf('\Work\Response\Error', $response);
+        $this->assertEquals($expectedValue, $response->getResult());
     }
 
     public function addHttpDataProvider(): array
@@ -61,13 +61,12 @@ class Datetime2DateControllerTest extends TestCase
     {
         // Получаем данные с помощью CURL
         $curl = new GetDataByCurl();
-        if ($curl->get('http://localhost/index.php/api/v1/convert/datetime2date?datetime=' . $testValue, 3)) {
+        $res = $curl->get('http://localhost/index.php/api/v1/convert/datetime2date?datetime=' . $testValue, 3);
+        $this->assertTrue($res);
+        if ($res) {
             // Парсим Json
-            if (isset($obj)) unset($obj);
             $obj = json_decode($curl->getData());
             $this->assertTrue(isset($obj->date) && isset($obj->timezone));
-        } else {
-            echo 'Невозможно подключиться к серверу';
         }
     }
 }

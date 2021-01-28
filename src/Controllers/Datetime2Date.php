@@ -30,7 +30,7 @@ class Datetime2Date extends BaseController
             return new Data((object)[
                 'date' => $dt->format("Y-m-d"),
                 'timezone' => $dt->getTimezone()->getName()
-            ]);
+            ],200);
         } catch (Throwable $t) { // Если есть проблема, то ругаемся
             return new Error($t->getMessage(), 500);
         }

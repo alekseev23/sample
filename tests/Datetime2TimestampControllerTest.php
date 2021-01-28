@@ -8,13 +8,21 @@ use Work\Common\GetDataByCurl;
 
 class Datetime2TimestampControllerTest extends TestCase
 {
+    /**
+     * Тестируем контроллер Datetime2Date
+     */
+    public function testControllerSuccessOnDatetime2Timestamp()
+    {
+        $controller = new \Work\Controllers\Datetime2Timestamp(['datetime' => '2021-01-01 12:48:15']);
+        $response = $controller->process();
+        $this->assertEquals('{"timestamp":1609494495}', $response->getResult());
+    }
+
     public function addDataProvider(): array
     {
         return [
-            ['2014-01-01 12:48:15', '{"timestamp":1388566095}', true],
-            ['2025-01-01 12:48:15', '{"timestamp":1735724895}', true],
-            ['2014-01-03 12:48:15', '{"timestamp":1735724895}', false],
-            ['', '', false],
+            ['200', 'datetime', '{"result":"error","message":"Call to a member function getTimestamp() on bool"}'],
+            ['abc', 'datetime1', '{"result":"error","message":"Переменная [datetime] не найдена"}'],
         ];
     }
 
@@ -22,23 +30,15 @@ class Datetime2TimestampControllerTest extends TestCase
      * @dataProvider addDataProvider
      * Тестируем контроллер Datetime2Timestamp
      * @param string $testValue
+     * @param string $paramName
      * @param string $expectedValue
-     * @param bool $equals
      */
-    public function testControllerSuccessOnDatetime2Timestamp(string $testValue, string $expectedValue, bool $equals)
+    public function testControllerFailureOnDatetime2Timestamp(string $testValue, string $paramName, string $expectedValue)
     {
-        $controller = new \Work\Controllers\Datetime2Timestamp(['datetime' => $testValue]);
+        $controller = new \Work\Controllers\Datetime2Timestamp([$paramName => $testValue]);
         $response = $controller->process();
-        if ($response instanceof \Work\Response\Error) {
-            $this->assertFalse($equals);
-        } else {
-            $str = $response->getResult();
-            if ($equals) {
-                $this->assertEquals($expectedValue, $str);
-            } else {
-                $this->assertNotEquals($expectedValue, $str);
-            }
-        }
+        $this->assertInstanceOf('\Work\Response\Error', $response);
+        $this->assertEquals($expectedValue, $response->getResult());
     }
 
     public function addHttpDataProvider(): array
@@ -61,13 +61,12 @@ class Datetime2TimestampControllerTest extends TestCase
     {
         // Получаем данные с помощью CURL
         $curl = new GetDataByCurl();
-        if ($curl->get('http://localhost/index.php/api/v1/convert/datetime2timestamp?datetime=' . $testValue, 3)) {
+        $res = $curl->get('http://localhost/index.php/api/v1/convert/datetime2timestamp?datetime=' . $testValue, 3);
+        $this->assertTrue($res);
+        if ($res) {
             // Парсим Json
-            if (isset($obj)) unset($obj);
             $obj = json_decode($curl->getData());
             $this->assertTrue(isset($obj->timestamp));
-        } else {
-            echo 'Невозможно подключиться к серверу';
         }
     }
 }
